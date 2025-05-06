@@ -39,16 +39,19 @@ public class Esercizio3 {
         //numero incidenti
         System.out.println("Inserire il numero di incidenti negli ultimi 5 anni:");
         numeroIncidenti = scannerInt.nextInt();
-
-        if (numeroIncidenti == 1) {
+        
+        //questo blocco dà errore quando è uguale a zero
+        if (numeroIncidenti == 0) {
+            prezzo = prezzo;
+        } else if (numeroIncidenti == 1) {
             prezzo += prezzo * 0.15;
-        } else if (numeroIncidenti > 1 && numeroIncidenti < 4) {
+        } else if (numeroIncidenti == 2) {
             prezzo += prezzo * 0.30;
-        } else {
+        } else if (numeroIncidenti >= 3) {
             System.out.println("Non sei idoneo per l'assicurazione.");
             scannerInt.close();
             return;
-        }
+        } 
 
         //scelta pacchetto assicurativo
         System.out.println("Scegli il pacchetto assicurativo tra:\n1. Base\n2. Intermedio\n3. Premium");
@@ -56,20 +59,20 @@ public class Esercizio3 {
 
         switch (pacchetto) {
             case 1:
-                
+                //nessun aumento
                 break;
             case 2:
-
+                 prezzo += prezzo * 0.20;
                 break;
             case 3:
-
+                  prezzo += prezzo * 0.50;
                 break;
-        
             default:
+                 System.out.println("Pacchetto non valido. Imposto il pacchetto Base.");
                 break;
         }
 
-
-
+           System.out.println("Il preventivo finale è:" + prezzo);
+           scannerInt.close();
     }
 }
